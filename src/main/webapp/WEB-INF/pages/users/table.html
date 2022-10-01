@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>cars</title>
+  <style>table th, table td {padding: 15px;} </style>
+</head>
+
+<body>
+<div align="center">
+<h1>Manager of users</h1>
+  <a href="/users/new">Create New User</a>
+  <br/><br/>
+<table th:border="1">
+  <tr>
+    <th>Id</th>
+    <th>Name</th>
+    <th>LastName</th>
+    <th>Mail</th>
+    <th>Age</th>
+  </tr>
+
+  <tr th:each="lst : ${list}">
+    <td th:utext="${lst.getId()}">Id</td>
+    <td th:utext="${lst.getUserName()}">Name</td>
+    <td th:utext="${lst.getUserLastname()}">LastName</td>
+    <td th:utext="${lst.getUserMail()}">Mail</td>
+    <td th:utext="${lst.getUserAge()}">Age</td>
+    <td>
+      <a th:href="@{'users/edit/' + ${lst.getId()}}">Edit</a>
+      &nbsp;&nbsp;&nbsp;
+      <a th:href="@{'users/delete/' + ${lst.getId()}}">Delete</a>
+    </td>
+  </tr>
+
+</table>
+</div>
+</body>
+</html>
